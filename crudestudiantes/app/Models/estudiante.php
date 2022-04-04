@@ -10,3 +10,5 @@ class estudiante extends Model
     use HasFactory;
     protected $fillable = ['codigo','nombre','direccion','telefono','email'];
 }
+
+

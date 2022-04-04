@@ -8,7 +8,20 @@ use App\Models\estudiante;
 class Crud extends Component
 {
     public $estudiantes, $id_estudiante,  $codigo, $nombre, $direccion, $telefono, $email;
+    
     public $modal = 0 ;
+
+
+
+    protected $rules = [
+        'codigo' => 'required|min:2',
+        'nombre' => 'required|min:2',
+        'direccion' => 'required|min:2',
+        'telefono' => 'required|min:2',
+        'email' => 'required|email|unique:collaborator',
+    ];
+
+
     public function render()
     {
         $this -> estudiantes = estudiante::all();
@@ -54,6 +67,11 @@ class Crud extends Component
     }
 
     public function guardar(){
+
+        
+        $validatedData = $this->validate();
+ 
+        estudiante::create($validatedData);
         estudiante::updateOrCreate(['id'=> $this -> id_estudiante],
         [
             'codigo' => $this-> codigo,
@@ -64,5 +82,6 @@ class Crud extends Component
         ]);
         $this->cerrarModal();
         $this->limpiarCampos();
+
     }
 }
