@@ -17,8 +17,8 @@ class Crud extends Component
         'codigo' => 'required|min:2',
         'nombre' => 'required|min:2',
         'direccion' => 'required|min:2',
-        'telefono' => 'required|min:2',
-        'email' => 'required|email|unique:collaborator',
+        'telefono' => 'required|min:2|max:8',
+        'email' => 'required|email',
     ];
 
 
@@ -69,9 +69,9 @@ class Crud extends Component
     public function guardar(){
 
         
-        $validatedData = $this->validate();
+       $validatedData = $this->validate();
  
-        estudiante::create($validatedData);
+        //estudiante::create($validatedData);
         estudiante::updateOrCreate(['id'=> $this -> id_estudiante],
         [
             'codigo' => $this-> codigo,

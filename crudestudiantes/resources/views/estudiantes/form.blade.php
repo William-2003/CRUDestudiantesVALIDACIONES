@@ -25,7 +25,7 @@
   <!--  textbox para el numero de telefono -->
   <div class="col-6">
     <label for="telefono" class="form-label">Numero de teléfono: </label>
-    <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Ejemplo: +*** (**** - ****)" wire:model = "telefono">
+    <input type="number" class="form-control" name="telefono" id="telefono" placeholder="Ejemplo: +*** (**** - ****)" wire:model = "telefono">
   </div>
     <br>
 
