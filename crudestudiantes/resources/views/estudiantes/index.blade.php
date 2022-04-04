@@ -13,7 +13,10 @@
             <br>
             <h1>Vista index del registro de estudiantes</h1>
             <br>
-            <a href="/estudiantes/create">Ir para crear un nuevo registro</a>
+            <button wire:click ="crear()" class="btn btn-success">Nuevo</button>
+            @if($modal)
+                @include('estudiantes.create')
+            @endif
             <br>
             <br>
             <table class="table ">
@@ -30,7 +33,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($crudestudiantes as $x)
+                    @foreach($estudiantes as $x)
                     <tr>
                         <td>{{ $x->id }}</td>
                         <td>{{ $x->codigo }}</td>
@@ -38,8 +41,8 @@
                         <td>{{ $x->direccion }}</td>
                         <td>{{ $x->telefono }}</td>
                         <td>{{ $x->email }}</td>
-                        <td><button type="button" class="btn btn-warning">Editar</button></td>
-                        <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+                        <td><button type="button" class="btn btn-warning" wire:click="edit({{$x->id}})">Editar</button></td>
+                        <td><button type="button" class="btn btn-danger" wire:click="eliminar({{$x->id}})">Eliminar</button></td>
                     </tr>
                     @endforeach
                 </tbody>

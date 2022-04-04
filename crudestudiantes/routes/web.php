@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EstudianteController;
+//use App\Http\Controllers\EstudianteController;
+use App\Http\livewire\Crud;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,16 +19,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('estudiantes', EstudianteController::class);
+//Route::resource('estudiantes', EstudianteController::class);
 
 
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
+Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
+    
+    Route::get('/estudiantes',Crud::class);
+    Route::get('/dashboard',function(){
         return view('dashboard');
     })->name('dashboard');
 });
